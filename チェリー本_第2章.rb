@@ -182,3 +182,18 @@ def g!(xxx)
 end
 
 g!(true)
+
+# ↑じゃなくて、「破壊的」な時に使うぽい.ただ気をつけてだけで使わないよね、そうだよね
+
+mubappe = "mubappe"
+mubappe.upcase
+puts mubappe
+
+mubappe2 = "mubappe"
+mubappe2.upcase!
+puts mubappe2
+
+def mubappe_upcase!(name)
+    puts name.upcase
+end
+mubappe_upcase!("mubappe")
