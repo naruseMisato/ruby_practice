@@ -84,7 +84,7 @@ end
 
 puts get_pet_name
 
-def get_pet_name2(is_formal_name)
+def get_pet_name2 is_formal_name
     return "引数がない〜" if is_formal_name.nil?
     "むーちゃんの公式名はムバッペ" if is_formal_name
 end
