@@ -116,3 +116,5 @@ def getName(input)
     p (1..3).include?(input)
 end
 getName(gets.to_i) # -> true
+
+# 例題：RGB
