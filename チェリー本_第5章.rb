@@ -72,3 +72,10 @@ def convert_length2(numeric:, before_converting:, after_converting:)
     puts numeric / UNITS[before_converting] * UNITS[after_converting]
 end
 convert_length2(numeric: 1, before_converting: :m, after_converting: :ft)
+
+# ハッシュのメソッド
+
+# keys, values, include?
+p b.keys # -> [:a, :b, :c]
+p b.values # -> ["1", "2", "3"]
+p b.include?(:a) # -> true # include?はhas_key?/member?のエイリアス

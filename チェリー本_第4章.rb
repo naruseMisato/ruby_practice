@@ -117,4 +117,30 @@ def getName(input)
 end
 getName(gets.to_i) # -> true
 
+# case文も扱える
+
+# case age
+# when 0..5
+#   0
+# when 6..10
+#   10
+# end
+
 # 例題：RGB
+
+def changeRGB(hex)
+  r = hex[1..2]
+  g = hex[3..4]
+  b = hex[5..6]
+  [r, g, b].map do |e|
+    e.hex
+  end
+end
+
+puts changeRGB("#ffffff") # -> 255 255 255
+
+# 値の取得ʕ•ᴥ•ʔ
+
+p array[-1] # 末尾の要素を取れる
+p array.last #↑同じく
+# p array[-100] # -> ERROR!要素がいを指定しちゃダメ
