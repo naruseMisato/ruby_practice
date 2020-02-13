@@ -146,11 +146,65 @@ class Mubappe7
 end
 
 pet7 = Mubappe7.new
-p pet7.get_name # -> ERROR!private method `get_name'
+# p pet7.get_name # -> ERROR!private method `get_name'
 
 # protected
 # →メソッドを定義したクラス自身とそのサブクラスのインスタンスメソッドから「レシーバ付き」で呼び出せるʕ•ᴥ•ʔ
-# →外部には公開したくないけど、呼び出したい場合に使うʕ•ᴥ•ʔ
-class Mubappe8
+# ※レシーバ：呼び出しクラス自身のこと（"Mubappe7"）
+# →外部には公開したくないけど、参照したい場合に使うʕ•ᴥ•ʔ
 
+class Mubappe8
+    def initialize(name, age)
+        @name = name
+        @age = age
+    end
+
+    def getGuineaPigAge(value)
+        "#{value.name}のモルモット年齢は#{value.age * 10}です"
+    end
+
+    def name
+        @name
+    end
+
+    protected
+    def age
+        @age
+    end
 end
+
+pet8 = Mubappe8.new("むーちゃん", 1.5)
+pet8_ = Mubappe8.new("むーちゃん", 2)
+
+p pet8.getGuineaPigAge(pet8_)
+p pet8.name # -> "むーちゃん"
+# p pet8.age # -> ERROR!protected method `age' called for #<Mubappe8:0x00007f7f4e056cc8 @name="むーちゃん", @age=1.5> 
+
+# でもって、protectedをprivateに直すと、↓のエラーに変わるぞʕ•ᴥ•ʔ
+
+class Mubappe9
+    def initialize(name, age)
+        @name = name
+        @age = age
+    end
+
+    def getGuineaPigAge(value)
+        "#{value.name}のモルモット年齢は#{value.age * 10}です"
+    end
+
+    def name
+        @name
+    end
+
+    private
+    def age
+        @age
+    end
+end
+
+pet9 = Mubappe9.new("むーちゃん", 1.5)
+pet9_ = Mubappe9.new("むーちゃん", 2)
+
+# p pet9.getGuineaPigAge(pet9_) # -> ERROR!private method `age' called for #<Mubappe8:0x00007fc20a856d70 @name="むーちゃん", @age=2>
+p pet9.name # -> "むーちゃん"
+# p pet9.age # -> ERROR!private method `age' called for #<Mubappe8:0x00007f7f4e056cc8 @name="むーちゃん", @age=1.5>
